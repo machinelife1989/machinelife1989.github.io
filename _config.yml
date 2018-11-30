@@ -4,10 +4,10 @@
 
 # Site
 title: 许鹏的技术博客
-subtitle: cognition and creation
+subtitle: cognition, philosophy and creation
 description:
 keywords:
-author: 许鹏
+author: 许 鹏
 language: zh
 timezone:
 
@@ -88,3 +88,6 @@ search:
 # Avatar
 sidebar-avatar: img/avatar.jpg
 
+# indent
+post_style:
+  indent: 0
