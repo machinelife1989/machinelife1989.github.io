@@ -11,7 +11,7 @@
 
     <title>
         
-        about - 许鹏的技术博客 | xupeng&#39;s blog
+        设计模式之我见 - 许鹏的技术博客 | xupeng&#39;s blog
         
     </title>
 
@@ -71,7 +71,7 @@
                     <span>存档</span>
                 </a>
             </li>
-            <li class="active">
+            <li>
                 <a href="/about/">
                     <i class="iconfont icon-guanyu2"></i>
                     <span>关于</span>
@@ -87,6 +87,10 @@
             
         </ul>
     </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
     
 </div>
 
@@ -112,29 +116,43 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-content no-indent">
-    <ul>
-<li>码农甲</li>
-<li>目标：国内码农Top100</li>
-<li>关注技术领域：<ul>
-<li>分布式服务</li>
-<li>框架技术</li>
-<li>中间件技术</li>
-<li>tcp/ip通信</li>
-<li>linux操作系统</li>
-<li>机器学习</li>
-</ul>
-</li>
-<li>联系方式：<ul>
-<li>neumannxupeng[@]gmail.com</li>
-</ul>
-</li>
-</ul>
 
-    
-    <div id="comment-container">
+
+<div class="post-container">
+    <div class="post-title">
+        设计模式之我见
     </div>
-    <div id="lv-container">
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-05-10 22:26:21</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#观点" title="观点">观点</a>
+        <span>/</span>
+        
+        
+        </span>
+
+
+    </div>
+    <div class="post-content no-indent">
+        <p>一个优秀的程序员必然要写的一手好代码。好代码的判定标准就是良好的可读性与扩展性。业界常提的<code>七大设计原则</code>和<code>23种设计模式</code>即是代码的最佳实践和设计指南。其实，设计模式也并非只有23种。请看<a href="https://github.com/iluwatar/java-design-patterns" target="_blank" rel="noopener">此处</a>。</p>
+<p>对于这些原则和设计模式，需要把握其本质，并应用到我们的生产实践当中。本质是什么呢？简而言之，即：<code>面向接口</code>。当我们针对一个实际问题进行代码设计时，实际上主要回答下面的问题：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">需要设计几个接口？ —— 开放封闭原则：哪些地方可能需要扩展，哪些地方就定义接口</span><br><span class="line">接口的职责是什么？ —— 单一职责原则 &amp; 接口隔离原则</span><br><span class="line">接口如何进行组合？ —— 组合/聚合复用原则 &amp; 依赖倒置原则</span><br></pre></td></tr></table></figure></p>
+<p>可以说，设计模式正是基于这些好的设计原则对上面三个问题的经典回答。这些设计模式，其中有些基本是一样的，也不必死抠概念，刻意区分，关键是理解本质，灵活运用。最常用的是下面几个：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Proxy Pattern</span><br><span class="line">Adapter Pattern</span><br><span class="line">Facade Pattern</span><br><span class="line">Stategy Pattern</span><br><span class="line">Observer Pattern</span><br><span class="line">Chain of Responsibility Pattern</span><br><span class="line">Command Pattern</span><br></pre></td></tr></table></figure>
+<p>在我看来，<code>设计模式</code>还有一个重要作用，就是告诉我们怎么给接口<code>命名</code>。作为一名程序员，<code>命名</code>是一个技术活儿。这种<code>命名</code>是约定共识。当命名确定下来，职责划分也就确定了下来。</p>
+<p>以最常用的<code>Observer Pattern</code>为例，我们通常的命名会是<code>xxListener</code>, 又或者是<code>xxObserver</code>。只看这个名字，我们就知道这个类是干什么的了。</p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
     </div>
 </div>
 
@@ -170,7 +188,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
