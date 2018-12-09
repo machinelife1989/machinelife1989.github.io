@@ -137,7 +137,25 @@
 
     </div>
     <div class="post-content no-indent">
-        
+        <p><strong>为什么需要锁</strong> </p>
+<p>在计算机的世界里，效率是我们追求的关键目标。既然要效率，就要<code>多核</code>，<code>多进程</code>，<code>多线程</code>，<code>多协程</code>。</p>
+<p>显然，光<code>多</code>，是不够的。大家必须被高效调度，才能人心齐，泰山移。<code>多</code>产生的一个关键问题就是<code>并发问题</code>。</p>
+<p>对于一片共享内存空间，大家都来<code>读</code>，没事，但是大家同时都来<code>写</code>，OK吗？如果OK的话，当然很好。如果不行，<code>锁</code>就登场了。</p>
+<p><strong>什么是锁</strong></p>
+<p><code>锁</code>的目标，就是让不安全的并行进行串行化。如果有了锁，所有并行单元，就去拿锁，谁能拿到锁，谁就执行。拿不到锁的自己想办法。这样就保证只有一个执行单元执行。</p>
+<p>所以，面对并发问题，我们希望对我们的代码加上一把小锁。那么，怎么才能有锁呢？</p>
+<p><strong>怎么实现锁</strong></p>
+<p><code>拿锁</code>这个动作显然本身也是一个并发问题。我们需要保证只有一个能够拿到锁。这时候，我们需要CPU给我们提供一种安全的<code>原子操作</code>机器指令——比如<code>CAS</code>。</p>
+<p>因为CPU调度、中断的最小单位就是机器指令，所以这个<code>原子操作</code>是不会有任何中断的。当然，<code>原子操作</code>本身并不是不会被中断。<code>原子操作</code>只是不可分割，不可能只执行一半。</p>
+<p>执行成功者，即拿到锁，执行失败者，只好自己想办法。</p>
+<p><strong>锁的种类</strong></p>
+<p>锁的本质只有一个。但是锁的衣服可以有千万种。比如：</p>
+<p><code>Mysql</code>中，我们经常会提：<code>乐观锁</code>、<code>悲观锁</code>、<code>意向锁</code>、<code>行锁</code>、<code>表锁</code>、<code>共享锁</code>、<code>排他锁</code>，<code>Gap Lock</code>，<code>Next-Key Lock</code>。</p>
+<p><code>Java</code>中，我们经常会提：<code>可重入锁</code>、<code>偏向锁</code>、<code>轻量级锁</code>、<code>重量级锁</code>、<code>公平锁</code>、<code>非公平锁</code>、<code>自旋锁</code>、<code>自适应自旋锁</code>、<code>分段锁</code>、<code>读写锁</code>。</p>
+<p>这么多的锁，只是针对不同的并发场景，为提供并发性能而进行的加锁放锁的策略设计。</p>
+<p><strong>总结</strong></p>
+<p>在并发这个江湖里，得锁者得天下。</p>
+
         
         <br>
         <div id="comment-container">

@@ -11,7 +11,7 @@
 
     <title>
         
-        高并发架构设计 - 许鹏的技术博客 | xupeng&#39;s blog
+        字节码生成ASM - 许鹏的技术博客 | xupeng&#39;s blog
         
     </title>
 
@@ -120,15 +120,15 @@
 
 <div class="post-container">
     <div class="post-title">
-        高并发架构设计
+        字节码生成ASM
     </div>
 
     <div class="post-meta">
-        <span class="attr">发布于：<span>2018-07-30 22:52:25</span></span>
+        <span class="attr">发布于：<span>2018-04-17 22:40:39</span></span>
         
         <span class="attr">标签：/
         
-        <a class="tag" href="/tags/#设计" title="设计">设计</a>
+        <a class="tag" href="/tags/#java" title="java">java</a>
         <span>/</span>
         
         
@@ -137,7 +137,15 @@
 
     </div>
     <div class="post-content no-indent">
-        
+        <p>关于这个话题，有一篇文章不错。原文见<a href="https://www.ibm.com/developerworks/cn/java/j-lo-asm30/index.html" target="_blank" rel="noopener">AOP 的利器：ASM 3.0 介绍</a>.</p>
+<p>这篇文章的发表时间是<code>2007年7月25日</code>。距今已十年有余。虽然很老，但是本质没变。最新的ASM版本是<code>7.0</code>. </p>
+<p>与其他的<code>Java bytecode frameworks</code>相比，ASM就是以性能著称。从其<a href="https://asm.ow2.io/" target="_blank" rel="noopener">官网</a>对其历史的介绍，就可窥得一斑。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ASM项目由Eric Bruneton于2000年在INRIA博士期间创建。那时它只是一个代码生成器（没有ClassReader，没有访问者概念）。java.lang.reflect.Proxy在JDK 1.3中发布类之前，它用于生成动态存根和代理类 。这些动态类用于向用户组件透明地添加非功能属性（日志记录，持久性，复制等）。</span><br><span class="line">后来添加了访问者的想法和ClassReader概念，以便能够转换现有的类。需要将非功能代码直接插入用户类，而不是在中间代理中插入（以获得更好的性能）。这些新功能由Eric Bruneton在法国电信研发部门（现为Orange Labs）获得博士学位后设计和实施，以实现Fractal组件模型。</span><br><span class="line">ASM项目于2002年在开源中发布，与Fractal项目同时发布。从那时起，该项目已经做了许多外部贡献。最重要的贡献者现在是ASM团队的一部分，即Eugene Kuleshov（自2003年起），Andrei Loskutov（自2004年起）和RémiForax（自2008年起）。</span><br></pre></td></tr></table></figure>
+<p>其使用非常简单，主线如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 用户通过继承ClassAdaptor(实现了ClassVisitor接口)，定义扩展方法</span><br><span class="line">* ClassAdaptor可传入实现了ClassVisitor的对象，形成职责链</span><br><span class="line">* 职责链的最底层是一个ClassWriter, 其实现了ClassVisitor接口</span><br><span class="line">* ClassReader是执行入口类，通过accept方法接受一个职责链入口(实现了ClassVisitor的对象)。</span><br></pre></td></tr></table></figure>
+<p>相关设计模式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 访问者模式</span><br><span class="line">* 责任链模式</span><br><span class="line">* 适配器模式</span><br></pre></td></tr></table></figure>
+
         
         <br>
         <div id="comment-container">
