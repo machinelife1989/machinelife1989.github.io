@@ -1206,3 +1206,8 @@ pre .javascript .function {
 .gitment-comment p {
   text-indent: 0;
 }
+
+/* fix issue https://github.com/aircloud/hexo-theme-aircloud/issues/36 */
+pre {
+  -webkit-text-size-adjust: none;
+}
